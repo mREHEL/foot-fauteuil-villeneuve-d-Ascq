@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calendrier et r&eacute;sultats du Foot Fauteuil Villeneuve d'Ascq.">
+  <title>Calendrier - FFVA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="home-visual page-visual calendar-rank-visual">
+    <header class="site-header" id="accueil">
+      <img class="header-logo" src="media/Logo-FFVA.png" alt="Logo Foot Fauteuil Villeneuve d'Ascq">
+      <div class="nav-wrap">
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" id="site-nav" aria-label="Navigation principale">
+          <a href="index.html">Accueil</a>
+          <a href="le-foot-fauteuil.html">Le foot fauteuil</a>
+          <a href="Effectif.html">Effectif</a>
+          <a class="is-active" href="Calendrier.html">Calendrier</a>
+          <a href="Classement.html">Classement</a>
+          <a href="Contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <p class="page-title">Calendrier / Résultats</p>
+  </div>
+
+  <main class="calendar-page">
+    <section class="calendar-shell" aria-labelledby="calendar-title">
+      <div class="calendar-heading">
+        <p class="section-kicker">Championnats</p>
+        <h1 id="calendar-title">Calendrier et r&eacute;sultats</h1>
+        <p>Retrouvez les calendriers officiels de la saison 2025-2026.</p>
+      </div>
+
+      <div class="layout-buttons calendar-tabs" role="tablist" aria-label="Choix de la division">
+        <button class="layout-button is-active" type="button" role="tab" aria-selected="true" data-layout="calendar-d1">Division 1</button>
+        <button class="layout-button" type="button" role="tab" aria-selected="false" data-layout="calendar-d2">Division 2</button>
+        <button class="layout-button" type="button" role="tab" aria-selected="false" data-layout="calendar-d4">Division 4</button>
+      </div>
+
+      <div class="calendar-panels">
+        <section class="layout-panel calendar-panel is-active" role="tabpanel" data-layout-panel="calendar-d1">
+          <div class="calendar-frame">
+            <iframe
+              src="https://foot-fauteuil.fr/saison/foot-fauteuil-division-1-2025-2026/?action=calendar"
+              title="Calendrier Division 1 Foot-Fauteuil"
+              loading="lazy"></iframe>
+          </div>
+
+          <a class="button secondary calendar-link" href="https://foot-fauteuil.fr/saison/foot-fauteuil-division-1-2025-2026/?action=calendar" target="_blank" rel="noopener">
+            Ouvrir le calendrier D1 officiel
+          </a>
+        </section>
+
+        <section class="layout-panel calendar-panel" role="tabpanel" data-layout-panel="calendar-d2" hidden>
+          <div class="calendar-frame">
+            <iframe
+              src="https://foot-fauteuil.fr/saison/foot-fauteuil-division-2-2025-2026/?action=calendar"
+              title="Calendrier Division 2 Foot-Fauteuil"
+              loading="lazy"></iframe>
+          </div>
+
+          <a class="button secondary calendar-link" href="https://foot-fauteuil.fr/saison/foot-fauteuil-division-2-2025-2026/?action=calendar" target="_blank" rel="noopener">
+            Ouvrir le calendrier D2 officiel
+          </a>
+        </section>
+
+        <section class="layout-panel calendar-panel" role="tabpanel" data-layout-panel="calendar-d4" hidden>
+          <div class="calendar-frame">
+            <iframe
+              src="https://foot-fauteuil.fr/saison/foot-fauteuil-division-4-zone-nord-2024-2025/?action=calendar"
+              title="Calendrier Division 4 Nord Foot-Fauteuil"
+              loading="lazy"></iframe>
+          </div>
+
+          <a class="button secondary calendar-link" href="https://foot-fauteuil.fr/saison/foot-fauteuil-division-4-zone-nord-2024-2025/?action=calendar" target="_blank" rel="noopener">
+            Ouvrir le calendrier D4 officiel
+          </a>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
