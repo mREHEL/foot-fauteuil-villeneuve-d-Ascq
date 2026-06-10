@@ -102,6 +102,35 @@ img {
   background: transparent;
 }
 
+.site-header.is-stuck {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 74px;
+  padding: 8px 20px 8px max(20px, calc((100vw - 1220px) / 2));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  background: linear-gradient(135deg, rgba(31, 100, 216, 0.96), rgba(21, 148, 71, 0.96));
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(16px);
+  animation: stuckHeaderIn 160ms ease-out both;
+}
+
+@keyframes stuckHeaderIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .empty-page {
   min-height: 520px;
   background: var(--paper);
@@ -643,6 +672,13 @@ img {
   line-height: 1.1;
 }
 
+.contact-info h3 {
+  margin: 8px 0 0;
+  color: var(--navy);
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
 .contact-info p {
   margin: 0;
   color: var(--muted);
@@ -654,6 +690,41 @@ img {
   width: fit-content;
   color: var(--blue);
   font-weight: 900;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  color: var(--white);
+  background: black;
+  box-shadow: 0 10px 22px rgba(16, 42, 99, 0.14);
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.social-icon path {
+  fill: currentColor;
+  stroke: none;
 }
 
 .calendar-page {
@@ -739,6 +810,11 @@ img {
   object-fit: contain;
 }
 
+.site-header.is-stuck .header-logo {
+  width: 76px;
+  margin: 0;
+}
+
 .partner-strip {
   display: flex;
   align-items: center;
@@ -772,6 +848,14 @@ img {
   width: min(1220px, calc(100% - 40px));
   margin: 0 auto;
   padding: 10px 0 22px;
+}
+
+.site-header.is-stuck .nav-wrap {
+  justify-content: flex-end;
+  flex: 1;
+  width: auto;
+  margin: 0;
+  padding: 0;
 }
 
 .brand {
@@ -815,6 +899,13 @@ img {
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
 }
 
+.site-header.is-stuck .main-nav {
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
 .main-nav > a {
   position: relative;
   overflow: hidden;
@@ -831,6 +922,21 @@ img {
   font-weight: 800;
   box-shadow: 0 10px 22px rgba(16, 42, 99, 0.14);
   transition: background-position 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.site-header.is-stuck .main-nav > a {
+  min-height: 42px;
+  padding: 10px 14px;
+  color: var(--navy);
+  background: var(--white);
+  font-size: 0.92rem;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
+}
+
+.site-header.is-stuck .main-nav > a.is-active {
+  color: var(--white);
+  background: var(--red);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.18);
 }
 
 .main-nav > a::before {
@@ -1238,6 +1344,21 @@ img {
 }
 
 @media (max-width: 1020px) {
+  .site-header.is-stuck {
+    gap: 14px;
+    min-height: 66px;
+  }
+
+  .site-header.is-stuck .header-logo {
+    width: 62px;
+  }
+
+  .site-header.is-stuck .nav-wrap {
+    flex: 1;
+    width: auto;
+    padding: 0;
+  }
+
   .menu-button {
     display: block;
     margin-left: auto;
@@ -1258,6 +1379,22 @@ img {
     border-radius: 8px;
     background: var(--white);
     box-shadow: none;
+  }
+
+  .site-header.is-stuck .main-nav {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: max(20px, calc((100vw - 1220px) / 2));
+    right: max(20px, calc((100vw - 1220px) / 2));
+    padding: 12px;
+    background: linear-gradient(135deg, rgba(31, 100, 216, 0.98), rgba(21, 148, 71, 0.98));
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.22);
+  }
+
+  .site-header.is-stuck .main-nav > a {
+    min-height: 50px;
+    padding: 12px 16px;
+    font-size: 1rem;
   }
 
   .main-nav.is-open {
@@ -1293,6 +1430,20 @@ img {
 }
 
 @media (max-width: 680px) {
+  .site-header.is-stuck {
+    min-height: 60px;
+    padding-inline: 14px;
+  }
+
+  .site-header.is-stuck .header-logo {
+    width: 54px;
+  }
+
+  .site-header.is-stuck .main-nav {
+    left: 14px;
+    right: 14px;
+  }
+
   .partner-strip {
     flex-wrap: wrap;
     gap: 10px;
@@ -1310,7 +1461,7 @@ img {
 
   .home-visual {
     min-height: clamp(620px, 88vh, 760px);
-    background-position: 58% 64%;
+    background-position: 72% 64%;
   }
 
   .page-visual {

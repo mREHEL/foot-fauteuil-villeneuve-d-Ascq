@@ -6,12 +6,16 @@ const searchForm = document.querySelector(".search-form");
 const searchInput = document.querySelector("#site-search");
 const menuButton = document.querySelector(".menu-button");
 const siteNav = document.querySelector("#site-nav");
+const siteHeader = document.querySelector(".site-header");
+const headerParent = siteHeader ? siteHeader.parentElement : null;
 const heroTitleText = document.querySelector(".hero-title-text");
 const layoutButtons = document.querySelectorAll(".layout-button");
 const layoutPanels = document.querySelectorAll(".layout-panel");
 
 let carouselIndex = 0;
 let heroPhraseIndex = 0;
+let carouselTimer = null;
+let isHeaderStuck = false;
 
 const heroPhrases = [
   "Bienvenue au Foot Fauteuil Villeneuvois",
@@ -63,6 +67,56 @@ function updateCarousel() {
   track.style.transform = `translateX(${-carouselIndex * step}px)`;
 }
 
+function goToNextSponsor() {
+  const maxIndex = getMaxIndex();
+
+  if (!maxIndex) {
+    return;
+  }
+
+  carouselIndex = carouselIndex >= maxIndex ? 0 : carouselIndex + 1;
+  updateCarousel();
+}
+
+function startCarouselAutoScroll() {
+  if (!carousel || carouselTimer) {
+    return;
+  }
+
+  carouselTimer = window.setInterval(goToNextSponsor, 3200);
+}
+
+function stopCarouselAutoScroll() {
+  window.clearInterval(carouselTimer);
+  carouselTimer = null;
+}
+
+function updateHeaderPosition() {
+  if (!siteHeader) {
+    return;
+  }
+
+  if (isHeaderStuck && headerParent) {
+    headerParent.style.paddingTop = `${siteHeader.offsetHeight}px`;
+  }
+
+  if (!isHeaderStuck && window.scrollY > 120) {
+    isHeaderStuck = true;
+    if (headerParent) {
+      headerParent.style.paddingTop = `${siteHeader.offsetHeight}px`;
+    }
+    siteHeader.classList.add("is-stuck");
+  }
+
+  if (isHeaderStuck && window.scrollY < 60) {
+    isHeaderStuck = false;
+    siteHeader.classList.remove("is-stuck");
+    if (headerParent) {
+      headerParent.style.paddingTop = "";
+    }
+  }
+}
+
 if (menuButton && siteNav) {
   menuButton.addEventListener("click", () => {
     const isOpen = siteNav.classList.toggle("is-open");
@@ -81,12 +135,23 @@ if (prevButton && nextButton) {
   prevButton.addEventListener("click", () => {
     carouselIndex -= 1;
     updateCarousel();
+    stopCarouselAutoScroll();
+    startCarouselAutoScroll();
   });
 
   nextButton.addEventListener("click", () => {
     carouselIndex += 1;
     updateCarousel();
+    stopCarouselAutoScroll();
+    startCarouselAutoScroll();
   });
+}
+
+if (carousel) {
+  carousel.addEventListener("mouseenter", stopCarouselAutoScroll);
+  carousel.addEventListener("mouseleave", startCarouselAutoScroll);
+  carousel.addEventListener("focusin", stopCarouselAutoScroll);
+  carousel.addEventListener("focusout", startCarouselAutoScroll);
 }
 
 if (searchForm && searchInput) {
@@ -140,5 +205,11 @@ if (layoutButtons.length && layoutPanels.length) {
   });
 }
 
-window.addEventListener("resize", updateCarousel);
+window.addEventListener("scroll", updateHeaderPosition, { passive: true });
+window.addEventListener("resize", () => {
+  updateCarousel();
+  updateHeaderPosition();
+});
 updateCarousel();
+updateHeaderPosition();
+startCarouselAutoScroll();
