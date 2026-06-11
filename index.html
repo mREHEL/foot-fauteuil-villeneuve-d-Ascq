@@ -1,115 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Accueil du Foot Fauteuil Villeneuve d'Ascq : club, entra&icirc;nements, sponsors, calendrier et contact.">
-  <title>Foot Fauteuil Villeneuve d'Ascq</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main>
-    <div class="home-visual">
-      <header class="site-header" id="accueil">
-        <img class="header-logo" src="media/Logo-FFVA.png" alt="Logo Foot Fauteuil Villeneuve d'Ascq">
-        <div class="nav-wrap">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Accueil du Foot Fauteuil Villeneuve d'Ascq : club, entra&icirc;nements, sponsors, calendrier et contact."
+		/>
+		<title>Foot Fauteuil Villeneuve d'Ascq</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<main>
+			<div class="home-visual">
+				<header class="site-header" id="accueil">
+					<img
+						class="header-logo"
+						src="media/Logo-FFVA.png"
+						alt="Logo Foot Fauteuil Villeneuve d'Ascq"
+					/>
+					<div class="nav-wrap">
+						<button
+							class="menu-button"
+							type="button"
+							aria-expanded="false"
+							aria-controls="site-nav"
+						>
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
 
-          <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+						<nav class="main-nav" id="site-nav" aria-label="Navigation principale">
+							<a class="is-active" href="#accueil">Accueil</a>
+							<a href="le-foot-fauteuil.html">Le foot fauteuil</a>
+							<a href="Effectif.html">Effectif</a>
+							<a href="Calendrier.html">Calendrier</a>
+							<a href="Classement.html">Classement</a>
+							<a href="Contact.html">Contact</a>
+						</nav>
+					</div>
+					<a class="header-contact" href="Contact.html">Nous contacter</a>
+				</header>
 
-          <nav class="main-nav" id="site-nav" aria-label="Navigation principale">
-            <a class="is-active" href="#accueil">Accueil</a>
-            <a href="le-foot-fauteuil.html">Le foot fauteuil</a>
-            <a href="Effectif.html">Effectif</a>
-            <a href="Calendrier.html">Calendrier</a>
-            <a href="Classement.html">Classement</a>
-            <a href="Contact.html">Contact</a>
-          </nav>
-        </div>
-      </header>
+				<section class="hero">
+					<div class="hero-content">
+						<h1 class="hero-title" aria-live="polite">
+							<span class="hero-title-text"
+								>Bienvenue au Foot Fauteuil Villeneuvois</span
+							>
+						</h1>
+					</div>
+				</section>
+			</div>
 
-      <section class="hero">
-        <div class="hero-content">
-          <h1 class="hero-title" aria-live="polite">
-            <span class="hero-title-text">Bienvenue au Foot Fauteuil Villeneuvois</span>
-          </h1>
-          <div class="hero-actions">
-            <a class="button primary" href="Contact.html">Nous contacter</a>
-          </div>
-        </div>
-      </section>
-    </div>
+			<section class="home-about" aria-labelledby="home-about-title">
+				<div class="home-about-inner">
+					<div class="home-about-media">
+						<img
+							src="media/image accueil .jpg"
+							alt="Joueurs de foot fauteuil en action autour du ballon"
+						/>
+					</div>
 
-    <section class="sponsors-section" id="sponsors">
-      <div class="section-heading">
-        <h2>Ils accompagnent le club</h2>
-      </div>
+					<div class="home-about-content">
+						<p class="section-kicker">Le foot fauteuil</p>
+						<h2 id="home-about-title">
+							Un football,<br />des valeurs, une <span>famille</span>
+						</h2>
+						<p>
+							Le foot fauteuil se joue &agrave; 4 contre 4, alliant
+							technique, strat&eacute;gie et esprit d'&eacute;quipe. Ouvert aux
+							personnes en situation de handicap moteur, il offre un cadre sportif
+							unique o&ugrave; chacun peut s'&eacute;panouir.
+						</p>
+						<a class="about-link" href="le-foot-fauteuil.html">En savoir plus</a>
+					</div>
+				</div>
+			</section>
 
-      <div class="carousel-row">
-        <button class="carousel-arrow prev" type="button" aria-label="Sponsors pr&eacute;c&eacute;dents"></button>
-        <div class="sponsor-carousel" data-carousel>
-          <div class="sponsor-track">
-            <article class="sponsor-card">
-              <img src="media/sponsors/1280px-Federation_francaise_handisport_logo_2009.svg.png" alt="F&eacute;d&eacute;ration Fran&ccedil;aise Handisport">
-            </article>
-            <article class="sponsor-card">
-              <img src="media/sponsors/EPFA_logo.png" alt="EPFA">
-            </article>
-            <article class="sponsor-card">
-              <img src="media/sponsors/FIPFA-LOGO-e1684161175109.jpg" alt="FIPFA">
-            </article>
-            <article class="sponsor-card">
-              <img src="media/sponsors/Logo-Region-HDF-e1684160745592.png" alt="R&eacute;gion Hauts-de-France">
-            </article>
-            <article class="sponsor-card">
-              <img src="media/sponsors/Logo_20_20_Fiteco_20_20_Lamacompta_84d7cd196b.png" alt="Fiteco Lamacompta">
-            </article>
-            <article class="sponsor-card">
-              <img src="media/sponsors/Logo_Nord-2.png" alt="D&eacute;partement du Nord">
-            </article>
-            <article class="sponsor-card">
-              <img src="media/sponsors/logo_oms_2013.jpg" alt="Office municipal du sport">
-            </article>
-            <article class="sponsor-card">
-              <img src="media/sponsors/vascq-logo-couleur-2.png" alt="Ville de Villeneuve d'Ascq">
-            </article>
-            <article class="sponsor-card">
-              <img src="media/sponsors/weezea_logo.jpeg" alt="Weezea">
-            </article>
-          </div>
-        </div>
-        <button class="carousel-arrow next" type="button" aria-label="Sponsors suivants"></button>
-      </div>
-    </section>
-  </main>
+			<section class="sponsors-section" id="sponsors">
+				<div class="section-heading">
+					<h2>Ils accompagnent le club</h2>
+				</div>
 
-  <footer class="site-footer" id="contact">
-    <div>
-      <h2>Foot Fauteuil Villeneuve d'Ascq</h2>
-      <p>Club handisport de foot-fauteuil &agrave; Villeneuve d'Ascq.</p>
-    </div>
-    <div>
-      <h3>Entra&icirc;nement D1 & D2</h3>
-      <p>Vendredi &agrave; partir de 18h<br>Salle Jean Caillau<br>rue Contrescarpe<br>59650 Villeneuve d'Ascq</p>
-    </div>
-    <div>
-      <h3>Entra&icirc;nement D4 & loisir</h3>
-      <p>Lundi &agrave; partir de 18h<br>Salle Jean Caillau<br>rue Contrescarpe<br>59650 Villeneuve d'Ascq</p>
-    </div>
-    <div>
-      <h3>Contacts</h3>
-      <p>BP 90054<br>59652 Villeneuve d'Ascq</p>
-      <a href="mailto:villeneuvedascq@ff-va.fr">villeneuvedascq@ff-va.fr</a>
-      <a href="https://foot-fauteuil.fr/" target="_blank" rel="noreferrer">Foot-Fauteuil France</a>
-    </div>
-  </footer>
+				<div class="carousel-row">
+					<button
+						class="carousel-arrow prev"
+						type="button"
+						aria-label="Sponsors pr&eacute;c&eacute;dents"
+					></button>
+					<div class="sponsor-carousel" data-carousel>
+						<div class="sponsor-track">
+							<article class="sponsor-card">
+								<img
+									src="media/sponsors/1280px-Federation_francaise_handisport_logo_2009.svg.png"
+									alt="F&eacute;d&eacute;ration Fran&ccedil;aise Handisport"
+								/>
+							</article>
+							<article class="sponsor-card">
+								<img src="media/sponsors/EPFA_logo.png" alt="EPFA" />
+							</article>
+							<article class="sponsor-card">
+								<img
+									src="media/sponsors/FIPFA-LOGO-e1684161175109.jpg"
+									alt="FIPFA"
+								/>
+							</article>
+							<article class="sponsor-card">
+								<img
+									src="media/sponsors/Logo-Region-HDF-e1684160745592.png"
+									alt="R&eacute;gion Hauts-de-France"
+								/>
+							</article>
+							<article class="sponsor-card">
+								<img
+									src="media/sponsors/Logo_20_20_Fiteco_20_20_Lamacompta_84d7cd196b.png"
+									alt="Fiteco Lamacompta"
+								/>
+							</article>
+							<article class="sponsor-card">
+								<img
+									src="media/sponsors/Logo_Nord-2.png"
+									alt="D&eacute;partement du Nord"
+								/>
+							</article>
+							<article class="sponsor-card">
+								<img
+									src="media/sponsors/logo_oms_2013.jpg"
+									alt="Office municipal du sport"
+								/>
+							</article>
+							<article class="sponsor-card">
+								<img
+									src="media/sponsors/vascq-logo-couleur-2.png"
+									alt="Ville de Villeneuve d'Ascq"
+								/>
+							</article>
+							<article class="sponsor-card">
+								<img src="media/sponsors/weezea_logo.jpeg" alt="Weezea" />
+							</article>
+						</div>
+					</div>
+					<button
+						class="carousel-arrow next"
+						type="button"
+						aria-label="Sponsors suivants"
+					></button>
+				</div>
+			</section>
+		</main>
 
-  <script src="script.js"></script>
-</body>
+		<footer class="site-footer" id="contact">
+			<div>
+				<h2>Foot Fauteuil Villeneuve d'Ascq</h2>
+				<p>Club handisport de foot-fauteuil &agrave; Villeneuve d'Ascq.</p>
+			</div>
+			<div>
+				<h3>Entra&icirc;nement D1 & D2</h3>
+				<p>
+					Vendredi &agrave; partir de 18h<br />Salle Jean Caillau<br />rue Contrescarpe<br />59650
+					Villeneuve d'Ascq
+				</p>
+			</div>
+			<div>
+				<h3>Entra&icirc;nement D4 & loisir</h3>
+				<p>
+					Lundi &agrave; partir de 18h<br />Salle Jean Caillau<br />rue Contrescarpe<br />59650
+					Villeneuve d'Ascq
+				</p>
+			</div>
+			<div>
+				<h3>Contacts</h3>
+				<p>BP 90054<br />59652 Villeneuve d'Ascq</p>
+				<a href="mailto:villeneuvedascq@ff-va.fr">villeneuvedascq@ff-va.fr</a>
+				<a href="https://foot-fauteuil.fr/" target="_blank" rel="noreferrer"
+					>Foot-Fauteuil France</a
+				>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
 </html>

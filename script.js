@@ -19,8 +19,6 @@ let isHeaderStuck = false;
 
 const heroPhrases = [
   "Bienvenue au Foot Fauteuil Villeneuvois",
-  "Vous souhaitez pratiquer du foot fauteuil à Villeneuve d’Ascq",
-  "Vous souhaitez faire un don à notre association"
 ];
 
 function normalizeText(value) {
