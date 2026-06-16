@@ -119,12 +119,18 @@ if (menuButton && siteNav) {
   menuButton.addEventListener("click", () => {
     const isOpen = siteNav.classList.toggle("is-open");
     menuButton.setAttribute("aria-expanded", String(isOpen));
+    if (headerParent) {
+      headerParent.classList.toggle("has-open-nav", isOpen);
+    }
   });
 
   siteNav.addEventListener("click", (event) => {
     if (event.target.tagName === "A") {
       siteNav.classList.remove("is-open");
       menuButton.setAttribute("aria-expanded", "false");
+      if (headerParent) {
+        headerParent.classList.remove("has-open-nav");
+      }
     }
   });
 }
@@ -207,6 +213,13 @@ window.addEventListener("scroll", updateHeaderPosition, { passive: true });
 window.addEventListener("resize", () => {
   updateCarousel();
   updateHeaderPosition();
+  if (window.innerWidth > 1020 && siteNav && menuButton) {
+    siteNav.classList.remove("is-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    if (headerParent) {
+      headerParent.classList.remove("has-open-nav");
+    }
+  }
 });
 updateCarousel();
 updateHeaderPosition();
