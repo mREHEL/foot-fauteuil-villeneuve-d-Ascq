@@ -986,7 +986,7 @@ img {
   box-shadow: none;
 }
 
-.mobile-contact-link {
+.main-nav > a.mobile-contact-link {
   display: none;
 }
 
