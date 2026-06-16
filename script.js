@@ -2,31 +2,16 @@ const carousel = document.querySelector("[data-carousel]");
 const track = document.querySelector(".sponsor-track");
 const prevButton = document.querySelector(".carousel-arrow.prev");
 const nextButton = document.querySelector(".carousel-arrow.next");
-const searchForm = document.querySelector(".search-form");
-const searchInput = document.querySelector("#site-search");
 const menuButton = document.querySelector(".menu-button");
 const siteNav = document.querySelector("#site-nav");
 const siteHeader = document.querySelector(".site-header");
 const headerParent = siteHeader ? siteHeader.parentElement : null;
-const heroTitleText = document.querySelector(".hero-title-text");
 const layoutButtons = document.querySelectorAll(".layout-button");
 const layoutPanels = document.querySelectorAll(".layout-panel");
 
 let carouselIndex = 0;
-let heroPhraseIndex = 0;
 let carouselTimer = null;
 let isHeaderStuck = false;
-
-const heroPhrases = [
-  "Bienvenue au Foot Fauteuil Villeneuvois",
-];
-
-function normalizeText(value) {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
 
 function getStep() {
   if (!track) {
@@ -156,37 +141,6 @@ if (carousel) {
   carousel.addEventListener("mouseleave", startCarouselAutoScroll);
   carousel.addEventListener("focusin", stopCarouselAutoScroll);
   carousel.addEventListener("focusout", startCarouselAutoScroll);
-}
-
-if (searchForm && searchInput) {
-  searchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const query = normalizeText(searchInput.value.trim());
-
-    if (!query) {
-      return;
-    }
-
-    const match = [...document.querySelectorAll("h1, h2, h3, p, a")].find((element) =>
-      normalizeText(element.textContent).includes(query)
-    );
-
-    if (match) {
-      match.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  });
-}
-
-if (heroTitleText) {
-  setInterval(() => {
-    heroPhraseIndex = (heroPhraseIndex + 1) % heroPhrases.length;
-    heroTitleText.classList.add("is-changing");
-
-    window.setTimeout(() => {
-      heroTitleText.textContent = heroPhrases[heroPhraseIndex];
-      heroTitleText.classList.remove("is-changing");
-    }, 280);
-  }, 4200);
 }
 
 if (layoutButtons.length && layoutPanels.length) {

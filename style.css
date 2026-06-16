@@ -449,10 +449,7 @@ img {
   gap: 18px;
 }
 
-.player-card,
-.team-column,
-.staff-feature,
-.staff-list article {
+.player-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--white);
@@ -491,92 +488,14 @@ img {
   text-transform: uppercase;
 }
 
-.player-card h2,
-.team-column h2,
-.staff-feature h2 {
+.player-card h2 {
   margin: 0 0 10px;
 }
 
-.player-card p:last-child,
-.staff-feature p:last-child {
+.player-card p:last-child {
   margin: 0;
   color: var(--muted);
   line-height: 1.55;
-}
-
-
-.team-columns {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.team-column {
-  padding: 26px;
-}
-
-.team-column ul {
-  display: grid;
-  gap: 10px;
-  margin: 18px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.team-column li {
-  padding: 12px 14px;
-  border-radius: 8px;
-  color: var(--muted);
-  background: #f5f8fc;
-  font-weight: 800;
-}
-
-.staff-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
-  gap: 18px;
-}
-
-.staff-feature {
-  min-height: 320px;
-  padding: clamp(28px, 5vw, 48px);
-  background:
-    linear-gradient(135deg, rgba(31, 100, 216, 0.95), rgba(21, 148, 71, 0.9)),
-    var(--blue);
-}
-
-.staff-feature .player-role,
-.staff-feature h2,
-.staff-feature p {
-  color: var(--white);
-}
-
-.staff-feature h2 {
-  max-width: 520px;
-  font-size: clamp(2rem, 4vw, 3.6rem);
-  line-height: 1;
-}
-
-.staff-list {
-  display: grid;
-  gap: 12px;
-}
-
-.staff-list article {
-  display: grid;
-  gap: 8px;
-  padding: 22px;
-}
-
-.staff-list span {
-  color: var(--green);
-  font-size: 0.78rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.staff-list strong {
-  font-size: 1.2rem;
 }
 
 .contact-page {
