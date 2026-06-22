@@ -1271,12 +1271,19 @@ img {
 
 .sponsor-carousel {
   overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .sponsor-track {
   display: flex;
   gap: 16px;
   transition: transform 260ms ease;
+}
+
+.sponsor-track.is-dragging {
+  transition: none;
 }
 
 .sponsor-card {

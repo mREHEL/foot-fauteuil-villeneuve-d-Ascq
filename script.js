@@ -11,6 +11,11 @@ const layoutPanels = document.querySelectorAll(".layout-panel");
 
 let carouselIndex = 0;
 let carouselTimer = null;
+let dragStartX = 0;
+let dragStartY = 0;
+let dragDeltaX = 0;
+let isDraggingCarousel = false;
+let hasCarouselDrag = false;
 let isHeaderStuck = false;
 
 function getStep() {
@@ -48,6 +53,44 @@ function updateCarousel() {
 
   carouselIndex = Math.min(Math.max(carouselIndex, 0), maxIndex);
   track.style.transform = `translateX(${-carouselIndex * step}px)`;
+}
+
+function moveCarouselDuringDrag(deltaX) {
+  const step = getStep();
+
+  if (!track || !step) {
+    return;
+  }
+
+  const maxIndex = getMaxIndex();
+  const baseTranslate = -carouselIndex * step;
+  const nextTranslate = baseTranslate + deltaX;
+  const minTranslate = -maxIndex * step;
+  const maxTranslate = 0;
+  const boundedTranslate = Math.min(Math.max(nextTranslate, minTranslate - 42), maxTranslate + 42);
+
+  track.style.transform = `translateX(${boundedTranslate}px)`;
+}
+
+function endCarouselDrag() {
+  if (!isDraggingCarousel || !track) {
+    return;
+  }
+
+  const step = getStep();
+  const shouldMove = step && Math.abs(dragDeltaX) > Math.min(80, step * 0.28);
+
+  track.classList.remove("is-dragging");
+
+  if (shouldMove) {
+    carouselIndex += dragDeltaX < 0 ? 1 : -1;
+  }
+
+  isDraggingCarousel = false;
+  hasCarouselDrag = false;
+  dragDeltaX = 0;
+  updateCarousel();
+  startCarouselAutoScroll();
 }
 
 function goToNextSponsor() {
@@ -141,6 +184,49 @@ if (carousel) {
   carousel.addEventListener("mouseleave", startCarouselAutoScroll);
   carousel.addEventListener("focusin", stopCarouselAutoScroll);
   carousel.addEventListener("focusout", startCarouselAutoScroll);
+
+  carousel.addEventListener("pointerdown", (event) => {
+    if (!track || event.pointerType === "mouse") {
+      return;
+    }
+
+    stopCarouselAutoScroll();
+    isDraggingCarousel = true;
+    hasCarouselDrag = false;
+    dragStartX = event.clientX;
+    dragStartY = event.clientY;
+    dragDeltaX = 0;
+    track.classList.add("is-dragging");
+    carousel.setPointerCapture(event.pointerId);
+  });
+
+  carousel.addEventListener("pointermove", (event) => {
+    if (!isDraggingCarousel) {
+      return;
+    }
+
+    const deltaX = event.clientX - dragStartX;
+    const deltaY = event.clientY - dragStartY;
+
+    if (!hasCarouselDrag && Math.abs(deltaY) > Math.abs(deltaX)) {
+      endCarouselDrag();
+      return;
+    }
+
+    if (Math.abs(deltaX) > 8) {
+      hasCarouselDrag = true;
+    }
+
+    if (!hasCarouselDrag) {
+      return;
+    }
+
+    dragDeltaX = deltaX;
+    moveCarouselDuringDrag(deltaX);
+  });
+
+  carousel.addEventListener("pointerup", endCarouselDrag);
+  carousel.addEventListener("pointercancel", endCarouselDrag);
 }
 
 if (layoutButtons.length && layoutPanels.length) {
